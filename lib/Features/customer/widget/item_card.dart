@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:max_assignment/Features/google_map/presentation/google_map_screen.dart';
 
 import '../../../Database/db_manager.dart';
 import '../../../model/customer_model.dart';
+import '../../google_map/widget/google_map_widget.dart';
 
 class ItemCard extends StatefulWidget {
   Model? model;
@@ -13,11 +15,11 @@ class ItemCard extends StatefulWidget {
 
   ItemCard(
       {this.model,
-        this.nameTextController,
-        this.emailTextController,
-        this.phoneTextController,
-        this.onDeletePress,
-        this.onEditPress});
+      this.nameTextController,
+      this.emailTextController,
+      this.phoneTextController,
+      this.onDeletePress,
+      this.onEditPress});
 
   @override
   _ItemCardState createState() => _ItemCardState();
@@ -60,14 +62,27 @@ class _ItemCardState extends State<ItemCard> {
               ),
               Row(
                 children: [
+                  // CircleAvatar(
+                  //   backgroundColor: Colors.white,
+                  //   child: IconButton(
+                  //     onPressed: (){
+                  //       widget.onEditPress!();
+                  //     },
+                  //     icon: const Icon(
+                  //       Icons.edit,
+                  //       color: Colors.blueAccent,
+                  //     ),
+                  //   ),
+                  // ),
                   CircleAvatar(
                     backgroundColor: Colors.white,
                     child: IconButton(
-                      onPressed: (){
-                        widget.onEditPress!();
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const MapScreen()));
                       },
                       icon: const Icon(
-                        Icons.edit,
+                        Icons.map,
                         color: Colors.blueAccent,
                       ),
                     ),
@@ -78,7 +93,9 @@ class _ItemCardState extends State<ItemCard> {
                   CircleAvatar(
                     backgroundColor: Colors.white,
                     child: IconButton(
-                      onPressed: (){widget.onDeletePress!();},
+                      onPressed: () {
+                        widget.onDeletePress!();
+                      },
                       icon: const Icon(
                         Icons.delete,
                         color: Colors.red,

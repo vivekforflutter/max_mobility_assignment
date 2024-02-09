@@ -152,7 +152,7 @@ class DialogBox {
         FocusNode? ageTextFocusNode*/}) {
     return AlertDialog(
       title: const Text("Enter person Data"),
-      content: Container(
+      content: SizedBox(
         height: 200,
         child: Column(
           children: [
